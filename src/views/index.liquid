@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>The Horizon Magazine</title>
+  </head>
+  <body>
+    <div class="full-height place-items-center">
+      <div id="landing-inner">
+        <picture>
+          <source
+            srcset="./assets/horizonheader-11.jpg"
+            media="(min-width: 1000px)"
+          />
+          <img
+            id="logo"
+            src="./assets/horizoninstagram5.jpg"
+            alt="Horizon Magazine Logo"
+          />
+        </picture>
+        <nav>
+          <ul>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#editions">Editions</a>
+            </li>
+            <li>
+              <a href="#submit">Submit</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <main>
+      <div id="about">
+        {{ about | render }}
+        {{ aboutbody | render }}
+      </div>
+      <div id="editions">
+        {{ editions | render }}
+        {{ editionsbody | render }}
+      </div>
+      <div id="submit">
+        {{ submit | render }}
+        {{ submitbody | render }}
+      </div>
+    </main>
+    <script data-goatcounter="https://thehorizonmagazine.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

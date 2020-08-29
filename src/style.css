@@ -1,0 +1,125 @@
+@font-face {
+  font-family: "Ortica Light";
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: url("./assets/fonts/Ortica/Ortica-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 300;
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: url("./assets/fonts/Ubuntu/Ubuntu.ttf") format("truetype");
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  line-height: 1.5;
+  text-align: justify;
+  margin: 0;
+  width: 100%;
+}
+
+#logo {
+  width: 70vw;
+  display: block;
+  margin: auto;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.place-items-center {
+  display: grid;
+  place-items: center;
+}
+
+nav ul {
+  margin-top: 3em;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+nav li {
+  margin-top: 2em;
+}
+
+a {
+  color: black;
+}
+
+nav a {
+  font-family: "Ortica Light";
+  text-decoration: none;
+  font-size: 1.7rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 80vw;
+  margin: auto;
+}
+
+main div {
+  padding-top: 2em;
+  margin-bottom: 4.75em;
+}
+
+h2 {
+  font-family: "Ortica Light";
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+#editions ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  margin: auto;
+}
+
+#editions ul a {
+  text-decoration: none;
+}
+
+#editions ul a:hover {
+  text-decoration: underline;
+}
+
+#submit ul {
+  list-style-type: "-  ";
+  padding-left: 1.75em;
+}
+
+@media (min-width: 1000px) {
+  #logo {
+    width: 55vw;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: space-around;
+    text-aign: left;
+  }
+
+  nav li {
+    display: inline;
+    margin-top: 0em;
+  }
+
+  main {
+    max-width: 600px;
+    font-size: 1.1rem;
+  }
+
+  #editions ul {
+    width: 350px;
+  }
+}

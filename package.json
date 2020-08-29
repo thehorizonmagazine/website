@@ -1,0 +1,18 @@
+{
+  "name": "horizon-magazine-site",
+  "version": "1.0.0",
+  "description": "https://thehorizonmagazine.com",
+  "main": "build.js",
+  "repository": "https://git.sr.ht/~idmyn/horizon-magazine-site",
+  "author": "horizon@davidmyno.rs",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "mkdir -p dist && cp -r assets dist/ && cp src/style.css dist/ && node build.js"
+  },
+  "dependencies": {
+    "liquidjs": "^9.15.0",
+    "prismic-dom": "^2.2.3",
+    "prismic-javascript": "^3.0.2"
+  }
+}
