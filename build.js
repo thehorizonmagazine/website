@@ -21,11 +21,16 @@ function engineWithRender(render) {
 }
 
 async function build() {
-  const data = await fetchHomepageData();
-  const render = PrismicDOM.RichText.asHtml.bind(PrismicDOM);
-  const engine = engineWithRender(render);
-  const html = engine.renderFileSync("index", { ...data });
-  fs.writeFileSync("dist/index.html", html);
+  try {
+    const data = await fetchHomepageData();
+    const render = PrismicDOM.RichText.asHtml.bind(PrismicDOM);
+    const engine = engineWithRender(render);
+    const html = engine.renderFileSync("index", { ...data });
+    fs.writeFileSync("dist/index.html", html);
+  } catch (err) {
+    console.log(err);
+    process.exit(1);
+  }
 }
 
 build();
