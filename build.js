@@ -24,15 +24,16 @@ function engineWithRender(render) {
 }
 
 async function getIssues() {
-  await $`curl ${DROPBOX_URL} -L -o issues.zip`
-  await $`unzip issues.zip -x / -d issues/`
+  if (!fs.pathExistsSync('issues')) {
+    await $`curl ${DROPBOX_URL} -L -o issues.zip`
+    await $`unzip issues.zip -x / -d issues/`
+  }
 
   const filePaths = await glob("./issues/*.pdf");
   const issues = filePaths.sort().map((path) => {
     const title = path.split("/").pop().split(".pdf")[0];
     const slug = title.replace(/ /g, "_");
     const href = `./${slug}`;
-    //const href = `./${slug}.pdf#toolbar=0`;
     return {
       path,
       title,
@@ -45,7 +46,6 @@ async function getIssues() {
     fs.copySync(path, `./dist/${slug}.pdf`);
   });
 
-  //console.log(issues);
   return issues;
 }
 
@@ -69,7 +69,9 @@ async function build() {
         slug,
       });
 
-      fs.writeFileSync(`dist/${slug}.html`, html);
+      const dirName = `dist/${slug}`
+      fs.ensureDirSync(dirName)
+      fs.writeFileSync(`${dirName}/index.html`, html);
     });
   } catch (err) {
     console.log(err);
