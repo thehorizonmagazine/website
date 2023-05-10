@@ -1,5 +1,6 @@
 {
   "name": "horizon-magazine-site",
+  "type": "module",
   "version": "1.0.0",
   "description": "https://thehorizonmagazine.com",
   "main": "build.js",
@@ -12,7 +13,9 @@
   },
   "dependencies": {
     "liquidjs": "^9.15.0",
+    "prettier": "^2.8.8",
     "prismic-dom": "^2.2.3",
-    "prismic-javascript": "^3.0.2"
+    "prismic-javascript": "^3.0.2",
+    "zx": "^7.2.1"
   }
 }

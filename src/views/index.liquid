@@ -39,6 +39,13 @@
       </div>
     </div>
     <main>
+      <div id="editionslist">
+        <ul>
+        {% for edition in editionslist %}
+          <li><a href="{{edition.href}}">{{ edition.title }}</a></li>
+        {% endfor %}
+        </ul>
+      </div>
       <div id="about">
         {{ about | render }}
         {{ aboutbody | render }}
