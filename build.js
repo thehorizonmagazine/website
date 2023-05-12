@@ -6,7 +6,7 @@ import PrismicDOM from "prismic-dom";
 import { glob, fs, $ } from "zx";
 
 const PRISMIC_URL = "https://thehorizonmagazine.cdn.prismic.io/api/v2";
-const DROPBOX_URL = "https://www.dropbox.com/sh/0p6m7q2iqvb8ck5/AAAHsyIeaHag_Shls6085-cca?dl=1"
+const { DROPBOX_URL } = process.env
 
 async function fetchHomepageData() {
   const api = await Prismic.getApi(PRISMIC_URL);
