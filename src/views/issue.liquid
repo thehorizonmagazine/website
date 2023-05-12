@@ -13,14 +13,15 @@
     <h1>{{ title }}</h1>
     <div id="pdf-container">
 
-      <object data="./{{ slug }}.pdf#toolbar=0" type="application/pdf" width="100%" height="100%">
-        <!-- <iframe src="./{{ slug }}.pdf#toolbar=0" width="100%" height="100%" style="border: none;"> -->
-          This browser does not support PDFs. Please download the PDF to view it:
-          <a href="./{{ slug }}.pdf">Download PDF</a>
-        </iframe>
-      </object>
-
-      <!-- <iframe src="./{{ slug }}.pdf#toolbar=0" width="100%" height="100%"></iframe> -->
+      <iframe src="./{{ slug }}.pdf#toolbar=0" width="100%" height="100%" style="border: none;"></iframe>
     </div>
+
+    <script>
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+      if (isMobile || window.matchMedia('(max-width: 500px)').matches) {
+        window.location.href = '{{slug}}.pdf'
+      }
+    </script>
   </body>
 </html>
