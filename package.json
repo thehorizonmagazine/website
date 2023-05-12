@@ -1,5 +1,6 @@
 {
   "name": "horizon-magazine-site",
+  "type": "module",
   "version": "1.0.0",
   "description": "https://thehorizonmagazine.com",
   "main": "build.js",
@@ -8,11 +9,21 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "mkdir -p dist && cp -r assets dist/ && cp src/style.css dist/ && node build.js"
+    "build": "mkdir -p dist && cp -r assets dist/ && cp src/style.css dist/ && node build.js",
+    "serve": "serve dist",
+    "watch": "chokidar \"src/**/*\" -c \"yarn build\"",
+    "dev": "concurrently \"npm:serve\" \"npm:watch\""
   },
   "dependencies": {
     "liquidjs": "^9.15.0",
+    "prettier": "^2.8.8",
     "prismic-dom": "^2.2.3",
-    "prismic-javascript": "^3.0.2"
+    "prismic-javascript": "^3.0.2",
+    "zx": "^7.2.1"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^8.0.1",
+    "serve": "^14.2.0"
   }
 }
