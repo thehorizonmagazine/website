@@ -37,6 +37,8 @@ Changes in Dropbox (e.g. renaming an issue, releasing a new issue, removing an i
 To manually trigger a re-build, visit [the deployments page for the site in Vercel](https://vercel.com/thehorizonmagazine/website/deployments?environment=production), and 'Redeploy' the most recent deployment.
 It might ask if you want to use the existing build cache: say no. You want to re-run the full build so that a fresh copy of the Dropbox folder is used.
 
+![how to redeploy](https://github.com/thehorizonmagazine/website/assets/4623769/a954d0f3-76bb-43e3-9cdf-9c192843f654)
+
 ## Troubleshooting
 
 You can see logs for failed deployments by selecting a deployment from [the list in Vercel](https://vercel.com/thehorizonmagazine/website/deployments) and expanding the "building" section (see below).
