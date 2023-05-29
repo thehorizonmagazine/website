@@ -20,7 +20,7 @@ The connection from GitHub to Vercel is configured on the Vercel side and looks 
 
 The [`build.js`](build.js) file asks Prismic for the "homepage" data and then injects that data into the [`index.liquid`](src/views/index.liquid) template. Styling (CSS) comes from the [`style.css`](src/style.css) file
 
-The build.js file also downloads the issue PDFs from dropbox and creates a page for each issue, using the dropbox filename as the issue title. A mapping of `issue title -> issue URL` is created and used to generate the `editionslist` section of the homepage.
+The build.js file also downloads the issue PDFs from dropbox via the **public: anybody with this link can view** link and creates a page for each issue, using the dropbox filename as the issue title. A mapping of `issue title -> issue URL` is created and used to generate the `editionslist` section of the homepage.
 
 Each issue page embeds the issue PDF like this: `<iframe src="./{{ slug }}.pdf#toolbar=0" width="100%" height="100%" style="border: none;"></iframe>` and `{{ slug }}` is 'injected' into the template in the build.js file.
 The `toolbar=0` parameter in the iframe src instructs the pdf reader to hide its toolbar but this only works in chrome-based browsers.
