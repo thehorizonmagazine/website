@@ -4,6 +4,8 @@ Code lives in this GitHub repository.
 
 Content lives in [Prismic](https://prismic.io).
 
+Issue PDFs live in [Dropbox](https://www.dropbox.com/home/HorizonIssues).
+
 Website is hosted by [Vercel](https://vercel.com), which listens for updates from GitHub and Prismic and rebuilds automatically when changes are detected.
 
 The connection from Prismic to Vercel looks like this:
@@ -17,6 +19,23 @@ The connection from GitHub to Vercel is configured on the Vercel side and looks 
 ## How the code works
 
 The [`build.js`](build.js) file asks Prismic for the "homepage" data and then injects that data into the [`index.liquid`](src/views/index.liquid) template. Styling (CSS) comes from the [`style.css`](src/style.css) file
+
+The build.js file also downloads the issue PDFs from dropbox and creates a page for each issue, using the dropbox filename as the issue title. A mapping of `issue title -> issue URL` is created and used to generate the `editionslist` section of the homepage.
+
+Each issue page embeds the issue PDF like this: `<iframe src="./{{ slug }}.pdf#toolbar=0" width="100%" height="100%" style="border: none;"></iframe>` and `{{ slug }}` is 'injected' into the template in the build.js file.
+The `toolbar=0` parameter in the iframe src instructs the pdf reader to hide its toolbar but this only works in chrome-based browsers.
+
+Because PDF support in mobile browsers is hit and miss, mobile users are directed to the actual PDF files (not webpages where those files are embedded). 
+This is achieved through script tags at the bottom of the `index.liquid` and `issue.liquid` template files. In `index.liquid` we adjust the hyperlink destination
+for each issue to point directly to the PDF if we detect you're on a mobile device, and if you land on the issue page we forcibly redirect you to the PDF 
+(this would happen if a desktop user sent you a link to a specific issue and you opened it on a phone).
+
+## Releasing new issues
+
+Changes in Dropbox (e.g. renaming an issue, releasing a new issue, removing an issue) will not automatically trigger a re-build of the website.
+
+To manually trigger a re-build, visit [the deployments page for the site in Vercel](https://vercel.com/thehorizonmagazine/website/deployments?environment=production), and 'Redeploy' the most recent deployment.
+It might ask if you want to use the existing build cache: say no. You want to re-run the full build so that a fresh copy of the Dropbox folder is used.
 
 ## Troubleshooting
 
